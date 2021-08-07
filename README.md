@@ -4,5 +4,5 @@ This project covers:
 - Classes & Objects
 - Getters & Setters & Properties & Attribute
 - Inheritance & polymorphism
-- Aggreagation
-- Decorator & Static methods & Class methods
+- Aggregation
+- Decorators & Static methods & Class methods
