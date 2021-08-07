@@ -1,8 +1,14 @@
 from room import Room
 from enemy import Enemy
 from friend import Friend
+from rpginfo import RPGInfo
 
 def main():
+    spooky_castle = RPGInfo("The Spooky Castle")
+    spooky_castle.welcome()
+    RPGInfo.info()
+    RPGInfo.author = "Raspberry Pi Foundation"
+
     # Creating rooms
     kitchen = Room("kitchen")
     kitchen.set_description("A dank and dirty room buzzing with flies")
@@ -13,6 +19,8 @@ def main():
     dininghall = Room("dining hall")
     dininghall.set_description("A large room with ornate golden decorations on each wall")
     
+    print("There are " + str(Room.number_of_rooms) + " rooms to explore.")
+
     # Linking rooms
     kitchen.link_room(dininghall,"south")
     ballroom.link_room(dininghall, "east")
@@ -51,6 +59,9 @@ def main():
             dead = fight(current_room, inhabitant)
         elif command == "hug":
             hug(inhabitant)
+
+    
+    RPGInfo.credits()
 
 def move_room(current_room, direction):
     return current_room.move(direction)

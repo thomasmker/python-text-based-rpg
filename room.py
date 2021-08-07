@@ -1,9 +1,13 @@
 class Room():
+
+    number_of_rooms = 0
+
     def __init__(self, room_name) -> None:
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
         self.character = None
+        Room.number_of_rooms += 1
     
     def get_name(self):
         return self.name
