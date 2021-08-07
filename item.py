@@ -1,13 +1,16 @@
 class Item():
     def __init__(self, item_name, item_description) -> None:
-        self.name = item_name
-        self.description =  item_description
+        self._name = item_name
+        self._description =  item_description
 
-    def get_name(self):
-        return self.name
+    @property
+    def name(self):
+        return self._name
 
-    def get_description(self):
-        return self.description
+    @property
+    def description(self):
+        return self._description
     
     def describe(self):
-        print("The [" + self.name + "] is here - " + self.description)
+        print("Item:")
+        print("The [" + self._name + "] is here - " + self._description)

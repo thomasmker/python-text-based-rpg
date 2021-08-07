@@ -13,6 +13,7 @@ class Character():
         self._conversation = conversation
 
     def describe(self):
+        print("Monster:")
         print(f"{self._name} is here! {self._description}")
     
     def talk(self):

@@ -1,5 +1,6 @@
 class Room():
 
+    # class variable 
     number_of_rooms = 0
 
     def __init__(self, room_name) -> None:
@@ -33,7 +34,7 @@ class Room():
     @property
     def item(self):
         return self._item
-        
+
     @item.setter
     def item(self,value):
         self._item = value
@@ -41,16 +42,28 @@ class Room():
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
 
-    def describe(self):
-        print(self._description)
-
     def get_details(self):
-        print(self.__name)
-        print("-"*60)
-        print(self._description)
+        room_detail = f"{self.__name} - {self._description}"
+        separator = "-"*len(room_detail)
+        print("Room:")
+        print(room_detail)
+        print(separator)
+
+        print("Directions:")
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print(f"The {room.name} is {direction}")
+        print(separator)
+
+        inhabitant = self.character
+        if inhabitant is not None:
+            inhabitant.describe()
+            print(separator)
+
+        item = self.item
+        if item is not None:
+            item.describe()
+            print(separator)
     
     def move(self, direction):
         if direction in self.linked_rooms:

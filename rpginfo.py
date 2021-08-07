@@ -5,7 +5,16 @@ class RPGInfo():
         self.title = game_title
 
     def welcome(self):
+        castle = """
+                 |~  _
+            [_]--'--[_]
+            |'|""`""|'|
+            | | /^\ | |
+            |_|_|I|_|_|
+        """
+        print(castle)
         print(f"Welcome to {self.title}")
+        input("Press any key to continue.")
 
     @staticmethod
     def info():
