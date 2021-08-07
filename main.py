@@ -17,7 +17,14 @@ def main():
     dininghall.link_room(kitchen,"north")
     dininghall.link_room(ballroom,"west")
 
-    dininghall.get_details()
+    current_room = kitchen
+    while True:
+        print("\n")
+        current_room.get_details()
+        command = input("> ")
+        if command == "exit":
+            break
+        current_room = current_room.move(command)
 
-if __name__ == "__main__":
+if __name__ == "_e_main__":
     main()
