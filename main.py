@@ -1,5 +1,6 @@
 from room import Room
-from character import Character
+from enemy import Enemy
+from friend import Friend
 
 def main():
     # Creating rooms
@@ -19,9 +20,16 @@ def main():
     dininghall.link_room(ballroom,"west")
 
     # Create character
-    dave = Character("Dave", "A zombie")
+    dave = Enemy("Dave", "A zombie")
     dave.set_conversation("What's up, dude?")
+    dave.set_weakness("cheese")
     dave.describe()
+    dave.talk()
+
+    elizabeth = Friend("Elizabeth", "A skeleton")
+    elizabeth.set_conversation("Hihihi")
+    elizabeth.describe()
+    elizabeth.talk()
 
     current_room = kitchen
     while True:
