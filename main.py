@@ -1,4 +1,5 @@
 from room import Room
+from character import Character
 
 def main():
     # Creating rooms
@@ -17,6 +18,11 @@ def main():
     dininghall.link_room(kitchen,"north")
     dininghall.link_room(ballroom,"west")
 
+    # Create character
+    dave = Character("Dave", "A zombie")
+    dave.set_conversation("What's up, dude?")
+    dave.describe()
+
     current_room = kitchen
     while True:
         print("\n")
@@ -26,5 +32,5 @@ def main():
             break
         current_room = current_room.move(command)
 
-if __name__ == "_e_main__":
+if __name__ == "__main__":
     main()
