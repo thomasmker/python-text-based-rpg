@@ -2,6 +2,7 @@ from room import Room
 from enemy import Enemy
 from friend import Friend
 from rpginfo import RPGInfo
+from item import Item
 
 def main():
     spooky_castle = RPGInfo("The Spooky Castle")
@@ -11,13 +12,13 @@ def main():
 
     # Creating rooms
     kitchen = Room("kitchen")
-    kitchen.set_description("A dank and dirty room buzzing with flies")
+    kitchen.description = "A dank and dirty room buzzing with flies"
 
     ballroom = Room("ballroom")
-    ballroom.set_description("A vast room with shiny wooden floor. huge candlesticks guard the entrance")
+    ballroom.description = "A vast room with shiny wooden floor. huge candlesticks guard the entrance"
 
     dininghall = Room("dining hall")
-    dininghall.set_description("A large room with ornate golden decorations on each wall")
+    dininghall.description = "A large room with ornate golden decorations on each wall"
     
     print("There are " + str(Room.number_of_rooms) + " rooms to explore.")
 
@@ -29,24 +30,38 @@ def main():
 
     # Create character
     dave = Enemy("Dave", "A zombie")
-    dave.set_conversation("Brrlgrh... rgrhl... brains...")
-    dave.set_weakness("cheese")
+    dave.conversation = "Brrlgrh... rgrhl... brains..."
+    dave.weakness = "cheese"
 
     elizabeth = Friend("Elizabeth", "A skeleton")
-    elizabeth.set_conversation("Hihihi")
+    elizabeth.conversation = "Hihihi"
+    
+    # Create Item
+    cheese = Item("cheese", "A large and smelly block of cheese")
+    book = Item("book", "A really good book entitled 'Knitting for dummies'")
     
     # Add char to the room
-    dininghall.set_character(dave)
+    dininghall.character = dave
+    
+    # Add item to the room
+    ballroom.item = cheese
+    dininghall.item = book
 
     current_room = kitchen
+    backpack = []
+
     dead = False
     while not dead:
         print("\n")
         current_room.get_details()
 
-        inhabitant = current_room.get_character()
+        inhabitant = current_room.character
         if inhabitant is not None:
             inhabitant.describe()
+
+        item = current_room.item
+        if item is not None:
+            item.describe()
 
         command = input("> ")
         if command == "exit":
@@ -80,7 +95,7 @@ def fight(current_room, inhabitant):
             fight_with = input()
             if inhabitant.fight(fight_with):
                 print("Hooray, you won the fight!")
-                current_room.set_character(None)
+                current_room.character = None
             else:
                 print("Oh dear, you lost the fight.")
                 print("That's the end of the game")

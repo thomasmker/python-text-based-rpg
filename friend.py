@@ -6,4 +6,4 @@ class Friend(Character):
         self.feeling = None
 
     def hug(self):
-        print(f"{self.name} hugs you back!")
+        print(f"{self._name} hugs you back!")

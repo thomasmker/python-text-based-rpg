@@ -1,21 +1,26 @@
 class Character():
     def __init__(self, char_name, char_description) -> None:
-        self.name = char_name
-        self.description = char_description
-        self.conversation = None
+        self._name = char_name
+        self._description = char_description
+        self._conversation = None
     
-    def describe(self):
-        print(f"{self.name} is here! {self.description}")
+    @property
+    def conversation(self):
+        return self._conversation
 
-    def set_conversation(self, conversation):
-        self.conversation = conversation
+    @conversation.setter
+    def conversation(self, conversation):
+        self._conversation = conversation
+
+    def describe(self):
+        print(f"{self._name} is here! {self._description}")
     
     def talk(self):
-        if self.conversation is not None:
-            print(f"[{self.name} says]: {self.conversation}")
+        if self._conversation is not None:
+            print(f"[{self._name} says]: {self._conversation}")
         else:
             print("{self.name} doesn't want to tal to you")
     
     def fight(self):
-        print(f"{self.name} doesn't want to fight with you")
+        print(f"{self._name} doesn't want to fight with you")
         return True

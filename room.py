@@ -3,40 +3,54 @@ class Room():
     number_of_rooms = 0
 
     def __init__(self, room_name) -> None:
-        self.name = room_name
-        self.description = None
+        self.__name = room_name
+        self._description = None
         self.linked_rooms = {}
-        self.character = None
+        self._character = None
+        self._item = None
         Room.number_of_rooms += 1
     
-    def get_name(self):
-        return self.name
+    @property
+    def name(self):
+        return self.__name
 
-    def set_description(self, room_description):
-        self.description = room_description
-    
-    def get_description(self):
-        return self.description
+    @property
+    def description(self):
+        return self._description
 
-    def set_character(self, character):
-        self.character = character
+    @description.setter
+    def description(self, value):
+        self._description = value    
+
+    @property
+    def character(self):
+        return self._character
+
+    @character.setter
+    def character(self, value):
+        self._character = value
     
-    def get_character(self):
-        return self.character
+    @property
+    def item(self):
+        return self._item
+        
+    @item.setter
+    def item(self,value):
+        self._item = value
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
 
     def describe(self):
-        print(self.description)
+        print(self._description)
 
     def get_details(self):
-        print(self.name)
+        print(self.__name)
         print("-"*60)
-        print(self.description)
+        print(self._description)
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
-            print(f"The {room.get_name()} is {direction}")
+            print(f"The {room.name} is {direction}")
     
     def move(self, direction):
         if direction in self.linked_rooms:
