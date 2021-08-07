@@ -4,3 +4,4 @@ This project covers:
 - Classes & Objects
 - Getters & Setters
 - Inheritance & polymorphism
+- Aggreagation
